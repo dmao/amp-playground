@@ -1,0 +1,257 @@
+<!--
+ Copyright 2016 Google Inc.
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+      http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!doctype html>
+<html ⚡ lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="canonical" href="/article.html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-experiment" src="https://cdn.ampproject.org/v0/amp-experiment-0.1.js"></script>
+
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+    <link rel="shortcut icon" href="amp_favicon.png">
+
+    <title>AMP Playground</title>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+
+      body {
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .center {
+        max-width: 790px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      header {
+        font-size: 2em;
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      p {
+        padding: 0.5em;
+        margin: 0.5em;
+      }
+
+      .sidebar {
+        width: 300px;
+      }
+      .question {
+        background-color: #2B63CD
+      }
+      body[amp-x-button-color-experiment="0"] .button-color-experiment {
+      background-color: yellow;
+      color: black;
+      }
+      body[amp-x-button-color-experiment="1"] .button-color-experiment {
+        background-color: red;
+      }
+      body[amp-x-button-color-experiment="2"] .button-color-experiment {
+        background-color: blue;
+      }
+      /* body[amp-x-button-type-experiment="primary"] .btn--secondary.btn--random,
+      body[amp-x-button-type-experiment="primary"] .btn--outline.btn--random {
+        display: none;
+      }
+      body[amp-x-button-type-experiment="secondary"] .btn--primary.btn--random,
+      body[amp-x-button-type-experiment="secondary"] .btn--outline.btn--random {
+        display: none;
+      }
+      body[amp-x-button-color-experiment="outline"] .btn--primary.btn--random,
+      body[amp-x-button-color-experiment="outline"] .btn--secondary.btn--random {
+        display: none;
+      } */
+      
+    </style>
+    <script type="application/ld+json">
+      {
+       "@context": "http://schema.org",
+       "@type": "NewsArticle",
+       "mainEntityOfPage":{
+         "@type":"WebPage",
+         "@id":"https://example.com/my-article.html"
+       },
+       "headline": "My First AMP Article",
+       "image": {
+         "@type": "ImageObject",
+         "url": "https://example.com/article_thumbnail1.jpg",
+         "height": 800,
+         "width": 800
+       },
+       "datePublished": "2015-02-05T08:00:00+08:00",
+       "dateModified": "2015-02-05T09:20:00+08:00",
+       "author": {
+         "@type": "Person",
+         "name": "John Doe"
+       },
+       "publisher": {
+         "@type": "Organization",
+         "name": "⚡ AMP Times",
+         "logo": {
+           "@type": "ImageObject",
+           "url": "https://example.com/amptimes_logo.jpg",
+           "width": 600,
+           "height": 60
+         }
+       },
+       "description": "My first experience in an AMPlified world"
+      }
+    </script>
+    
+  </head>
+  <body>
+    <amp-experiment>
+      <script type="application/json">
+        {
+          "button-color-experiment": {
+            "sticky": false,
+            "variants": {
+              "0": 30,
+              "1": 30,
+              "2": 30
+            }
+          }
+        }
+      </script>
+    </amp-experiment>
+    
+    <header class="headerbar center">
+      <!-- <button type="button" on="tap:sidebar1.toggle" tabindex="0" class="hamburger">☰</button> -->
+      <p class="site-name">AMP Playground</p>
+    </header>
+    <amp-sidebar id="sidebar1" layout="nodisplay" side="right" class="sidebar">
+      <div role="button" aria-label="close sidebar" on="tap:sidebar1.toggle" tabindex="0" class="close-sidebar">✕</div>
+      <ul class="">
+        <li><a href="#">Example 1</a></li>
+        <li><a href="#">Example 2</a></li>
+        <li><a href="#">Example 3</a></li>
+      </ul>
+    </amp-sidebar>
+
+    <main class="center">
+      <article>
+        <header>
+          <h1>Top Trump ally sounds 2020 election alarm over coronavirus response</h1>
+        </header>
+        <amp-img
+          alt="A view of the sea"
+          src="/img/mountains.jpg"
+          width="900"
+          height="675"
+          layout="responsive"
+        >
+        </amp-img>
+        <p>There is growing concern among top conservative leaders that the Trump administration isn't addressing the long-term economic impact of the coronavirus, several sources tell Axios. One top adviser said if the recovery is bungled it could cost President Trump the election.</p>
+
+        <p>What we're hearing: "The next 4-8 weeks is really going to decide whether Trump gets reelected," Stephen Moore, Trump's former nominee for the Federal Reserve board, told Axios. If the administration mishandles its economic recovery efforts, he said, Trump is "in big trouble."</p>
+        
+        <ul>
+          <li>
+            Other conservative leaders — including former Congressman and Club for Growth President David McIntosh, a Pence ally who served in the same Indiana district immediately before the Vice President — said they worry that there isn't enough attention being placed on the longer-term, post-coronavirus economic strategy.
+          </li>
+        </ul>
+
+        
+        <p>Treasury Secretary Steven Mnuchin has been singled out for some of the sharpest criticism.</p>
+        
+        <ul>
+          <li>"I don't think [Mnuchin] has yet started thinking about that long-term, how do we incentivize the rapid recovery or the V-shape bounce back?" McIntosh told Axios.</li>
+          <li>"I understand their planning process, to deal with emergency,” he said. “But now it's time to start thinking of the exit strategy.”</li>
+          <li>“Red flags are going up. We understand that there is this sort of survival phase, but there's a concern that Mnuchin is overplaying that and not looking ahead," a conservative strategist told Axios. "The emerging consensus is the next phase needs to be about economic growth, not about making government bigger through massive spending and increased regulation that stifles the economic recovery."  </li>
+        </ul>
+            
+        <p>Why it matters: Trump built his re-election pitch on the idea the U.S. has seen historic prosperity under his leadership — but now the economy is in shambles.</p>
+        
+        <p>The other side: "The President wants to see this country open again so people can get back to work and every action he has taken throughout this pandemic has been to ensure we emerge healthy, stronger, and with a growing, prosperous economy," White House spokesman Judd Deere told Axios.</p> 
+        
+        <ul>
+          <li>“It was under the President’s leadership that the United States economy reached such amazing heights before it was artificially interrupted and he is the leader to take us back there again," Trump campaign communications director Tim Murtaugh said.
+            The Treasury Department did not respond to a request for comment.</li>
+        </ul>
+            
+        
+        <p>The big picture: Trump, who is growing increasingly frustrated with the pandemic's negative impact on the economy, is preparing to launch a second coronavirus task force focused on economic recovery.</p>
+        
+        <ul>
+          <li>            But McIntosh poured cold water on the idea of a totally separate task force, warning that a second group would create "competing centers for decision making."
+            Instead, McIntosh recommended that they instead beef up the existing task force led by Pence with outside business advisers, not more government officials, "to give them that perspective of what matters in the real world economy." </li>
+        </ul>
+
+        <p>The bottom line: "Scientific data will drive any decisions on reopening the country because [Trump's] number one priority is to protect the safety and well-being of the American people," a White House official said. </p>
+        
+      </article>
+      
+      <h2>Related article</h2>
+      <amp-list width="300"
+        height="75"
+        layout="responsive"
+        src="js/related_question.json"
+        binding="no">
+        <template type="amp-mustache">
+          <article>
+              <h2> {{ title }} </h2>
+              <p> {{ response }} </p>
+          </article>
+        </template>
+      </amp-list>
+
+      <div class="random">
+        <button type="button" class="button-color-experiment">Load a random button style</button>
+        <!-- <button type="button" class="btn btn--primary btn--random">Load a random question</button>
+        <button type="button" class="btn btn--secondary btn--random">Load a random question</button>
+        <button type="button" class="btn btn--outline btn--random">Load a random question</button> -->
+      </div>
+      <amp-analytics type="googleanalytics">
+        <script type="application/json">
+          {
+            "vars": {
+              "account": ""
+            },
+            "requests": {
+              "experiment": "${pageview}&xid=${experiment}&xvar=${variant}"
+            },
+            "triggers": {
+              "default pageview": {
+                "on": "visible",
+                "request": "experiment",
+                "vars": {
+                  "experiment": "",
+                  "variant": "VARIANT(button-color-experiment)"
+                }
+              }
+            }
+          }
+        </script>
+      </amp-analytics>
+    </main>
+
+
+  </body>
+</html>
