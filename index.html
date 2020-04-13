@@ -18,16 +18,18 @@
 <html ⚡ lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="canonical" href="/article.html">
+    <link rel="canonical" href="/index.html">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js" async></script>
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
     <script async custom-element="amp-experiment" src="https://cdn.ampproject.org/v0/amp-experiment-0.1.js"></script>
-
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-
+    <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <meta name="amp-script-src" content="sha384-_K5vObiCHYkKi59Du3oqqLYhv3FxC2SoQ6OXQ6FcKaAovOQDBbVJFN2Xl1-vRjhw"/>
     <link rel="shortcut icon" href="amp_favicon.png">
 
     <title>AMP Playground</title>
@@ -76,18 +78,44 @@
       body[amp-x-button-color-experiment="2"] .button-color-experiment {
         background-color: blue;
       }
-      /* body[amp-x-button-type-experiment="primary"] .btn--secondary.btn--random,
-      body[amp-x-button-type-experiment="primary"] .btn--outline.btn--random {
-        display: none;
+
+      .is-not-scrollable {
+        overflow: h
       }
-      body[amp-x-button-type-experiment="secondary"] .btn--primary.btn--random,
-      body[amp-x-button-type-experiment="secondary"] .btn--outline.btn--random {
-        display: none;
+      body[amp-x-newsletter-experiment="0"] .custom-lightbox__content {background-color: #3b6be3;}
+      body[amp-x-newsletter-experiment="1"] .custom-lightbox__content {background-color: hotpink;}
+      body[amp-x-newsletter-experiment="2"] .custom-lightbox {
+        background-color: #fff;
+        top: 210px;
+        border-top: 1px solid silver;
+        }
+      .custom-lightbox {
+        background: rgba(0,0,0,0.8);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0; 
+        pointer-events: none;
       }
-      body[amp-x-button-color-experiment="outline"] .btn--primary.btn--random,
-      body[amp-x-button-color-experiment="outline"] .btn--secondary.btn--random {
-        display: none;
-      } */
+      .custom-lightbox__content {
+        background-color: #3b6be3;
+        border-radius: 8px;
+        max-width: 60ch;
+        min-width: 300px;
+        padding: 16px;
+        pointer-events: all;
+      }
+
+      .custom-lightbox h1 {
+        color: white;
+      }
       
     </style>
     <script type="application/ld+json">
@@ -127,15 +155,24 @@
     
   </head>
   <body>
+
     <amp-experiment>
       <script type="application/json">
         {
           "button-color-experiment": {
             "sticky": false,
             "variants": {
-              "0": 30,
-              "1": 30,
-              "2": 30
+              "0": 33,
+              "1": 33,
+              "2": 33
+            }
+          },
+          "newsletter-experiment": {
+            "sticky": false,
+            "variants": {
+              "0": 33,
+              "1": 33,
+              "2": 33
             }
           }
         }
@@ -250,6 +287,31 @@
           }
         </script>
       </amp-analytics>
+      
+
+      <div class="custom-lightbox" tabindex="0" role="button"  id="customLightbox" on="tap:customLightbox.hide">
+        <div class="custom-lightbox__content" >  
+          <form method="post" action-xhr="https://example.com/subscribe" target="_top">
+            <label>
+              <span>Email:</span>
+              <input type="email"
+                name="email"
+                required>
+            </label>
+            <button type="submit">Subscribe</button>
+            <div submit-success>
+              <template type="amp-mustache">
+                Subscription successful!
+              </template>
+            </div>
+            <div submit-error>
+              <template type="amp-mustache">
+                Subscription failed!
+              </template>
+            </div>
+          </form>
+        </div>       
+      </div> 
     </main>
 
 
