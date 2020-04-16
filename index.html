@@ -109,8 +109,15 @@
         border-radius: 8px;
         max-width: 60ch;
         min-width: 300px;
-        padding: 16px;
+        padding: 80px;
         pointer-events: all;
+        position: relative;
+      }
+
+      .custom-lightbox__close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
       }
 
       .custom-lightbox h1 {
@@ -189,6 +196,15 @@
               "vars": {
                 "eventCategory": "examples",
                 "eventAction": "clicked-header"
+              }
+            },
+            "click on close newsletter": {
+              "on": "click",
+              "selector": ".close-newsletter-form",
+              "request": "event",
+              "vars": {
+                "eventCategory": "examples",
+                "eventAction": "clicked-close-newsletter"
               }
             },
             "scroll the page trigger": {
@@ -314,7 +330,7 @@
 
       
 
-      <div class="custom-lightbox" tabindex="0" role="button"  id="customLightbox" on="tap:customLightbox.hide">
+      <div class="custom-lightbox" tabindex="0" role="button"  id="customLightbox" >
         <div class="custom-lightbox__content" >  
           <form method="post" action-xhr="https://example.com/subscribe" target="_top">
             <label>
@@ -335,6 +351,7 @@
               </template>
             </div>
           </form>
+          <button type="button" class="custom-lightbox__close" on="tap:customLightbox.hide" id="close-newsletter-form">✕</button>
         </div>       
       </div> 
     </main>
