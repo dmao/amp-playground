@@ -292,7 +292,16 @@
                   "eventAction": "clicked-subscribe-newsletter"
                 }
               }
-            }
+            },
+            "click on submit newsletter trigger": {
+                "on": "click",
+                "selector": "#js-subscribe-newsletter",
+                "request": "event",
+                "vars": {
+                  "eventCategory": "examples",
+                  "eventAction": "clicked-subscribe-newsletter"
+                }
+              }
           }
         </script>
       </amp-analytics>
