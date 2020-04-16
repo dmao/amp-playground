@@ -155,7 +155,46 @@
     
   </head>
   <body>
-
+    <amp-analytics type="googleanalytics">
+      <script type="application/json">
+        {
+          "vars": {
+            "account": "UA-163300991-1"
+          },
+          "requests": {
+            "experiment": "${pageview}&xid=${experiment}&xvar=${variant}"
+          },
+          "triggers": {
+            "default pageview": {
+              "on": "visible",
+              "request": "experiment",
+              "vars": {
+                "xid": "H8vIiY2yTGq_zRqryahpKQ",
+                "xvar": "VARIANT(button-color-experiment)"
+              }
+            },
+            "click on submit newsletter trigger": {
+              "on": "click",
+              "selector": "#js-subscribe-newsletter",
+              "request": "event",
+              "vars": {
+                "eventCategory": "examples",
+                "eventAction": "clicked-subscribe-newsletter"
+              }
+            },
+            "click on header trigger": {
+              "on": "click",
+              "selector": "#header",
+              "request": "event",
+              "vars": {
+                "eventCategory": "examples",
+                "eventAction": "clicked-header"
+              }
+            }
+          }
+        }
+      </script>
+    </amp-analytics>
     <amp-experiment>
       <script type="application/json">
         {
@@ -265,46 +304,7 @@
         <button type="button" class="btn btn--secondary btn--random">Load a random question</button>
         <button type="button" class="btn btn--outline btn--random">Load a random question</button> -->
       </div>
-      <amp-analytics type="googleanalytics">
-        <script type="application/json">
-          {
-            "vars": {
-              "account": "UA-163300991-1"
-            },
-            "requests": {
-              "experiment": "${pageview}&xid=${experiment}&xvar=${variant}"
-            },
-            "triggers": {
-              "default pageview": {
-                "on": "visible",
-                "request": "experiment",
-                "vars": {
-                  "xid": "H8vIiY2yTGq_zRqryahpKQ",
-                  "xvar": "VARIANT(button-color-experiment)"
-                }
-              },
-              "click on submit newsletter trigger": {
-                "on": "click",
-                "selector": "#js-subscribe-newsletter",
-                "request": "event",
-                "vars": {
-                  "eventCategory": "examples",
-                  "eventAction": "clicked-subscribe-newsletter"
-                }
-              },
-              "click on header trigger": {
-                "on": "click",
-                "selector": "#header",
-                "request": "event",
-                "vars": {
-                  "eventCategory": "examples",
-                  "eventAction": "clicked-header"
-                }
-              }
-            },
-          }
-        </script>
-      </amp-analytics>
+
       
 
       <div class="custom-lightbox" tabindex="0" role="button"  id="customLightbox" on="tap:customLightbox.hide">
