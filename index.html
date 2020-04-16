@@ -179,7 +179,7 @@
       </script>
     </amp-experiment>
     
-    <header class="headerbar center">
+    <header class="headerbar center" id="header">
       <!-- <button type="button" on="tap:sidebar1.toggle" tabindex="0" class="hamburger">☰</button> -->
       <p class="site-name">AMP Playground</p>
     </header>
@@ -291,17 +291,17 @@
                   "eventCategory": "examples",
                   "eventAction": "clicked-subscribe-newsletter"
                 }
-              }
-            },
-            "click on submit newsletter trigger": {
+              },
+              "click on header trigger": {
                 "on": "click",
-                "selector": "#js-subscribe-newsletter",
+                "selector": "#header",
                 "request": "event",
                 "vars": {
                   "eventCategory": "examples",
-                  "eventAction": "clicked-subscribe-newsletter"
+                  "eventAction": "clicked-header"
                 }
               }
+            },
           }
         </script>
       </amp-analytics>
