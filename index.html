@@ -29,6 +29,7 @@
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
+    <script async custom-element="amp-access" src="https://cdn.ampproject.org/v0/amp-access-0.1.js"></script>
     <meta name="amp-script-src" content="sha384-_K5vObiCHYkKi59Du3oqqLYhv3FxC2SoQ6OXQ6FcKaAovOQDBbVJFN2Xl1-vRjhw"/>
     <link rel="shortcut icon" href="amp_favicon.png">
 
@@ -159,10 +160,28 @@
        "description": "My first experience in an AMPlified world"
       }
     </script>
+    <!-- <script id="amp-access" type="application/json">
+      {
+          "authorization": "/amp-authorization?rid=READER_ID&url=CANONICAL_URL&ref=DOCUMENT_REFERRER&_=RANDOM",
+          "pingback": "/amp-pingback?rid=READER_ID&url=CANONICAL_URL&ref=DOCUMENT_REFERRER&_=RANDOM",
+          "login": {
+            "sign-in": "/documentation/examples/api/amp-access/login?rid=READER_ID&url=CANONICAL_URL",
+            "sign-out": "/documentation/examples/api/amp-access/logout"
+          },
+          "authorizationFallbackResponse": {
+              "error": true,
+              "loggedIn": false,
+              "powerUser": false
+          }
+      }
+    </script> -->
+    
     
   </head>
   <body>
-    <amp-analytics type="googleanalytics">
+    
+    <amp-analytics type="googleanalytics" config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include">
+      
       <script type="application/json">
         {
           "vars": {
@@ -180,40 +199,6 @@
                 "xvar": "VARIANT(button-color-experiment)"
               }
             },
-            "click on submit newsletter trigger": {
-              "on": "click",
-              "selector": "#js-subscribe-newsletter",
-              "request": "event",
-              "vars": {
-                "eventCategory": "examples",
-                "eventAction": "clicked-subscribe-newsletter"
-              }
-            },
-            "click on header trigger": {
-              "on": "click",
-              "selector": "#header",
-              "request": "event",
-              "vars": {
-                "eventCategory": "examples",
-                "eventAction": "clicked-header"
-              }
-            },
-            "click on close newsletter": {
-              "on": "click",
-              "selector": "#close-newsletter-form",
-              "request": "event",
-              "vars": {
-                "eventCategory": "examples",
-                "eventAction": "clicked-close-newsletter"
-              }
-            },
-            "scroll the page trigger": {
-              "on": "scroll",
-              "scrollSpec": {
-                "verticalBoundaries": [25, 50, 90]
-              },
-              "request": "event"
-            }
           }
         }
       </script>
@@ -255,6 +240,56 @@
     </amp-sidebar>
 
     <main class="center">
+      <!-- ## Controlling visibility -->
+      <!-- This section is visible to all users. No special markup is needed in this case.-->
+      <section>
+        Welcome to the website! This section is visible to all.
+      </section>
+
+      <!-- Use the `amp-access` attribute to control the visibility of each component. The expression must evaluate to a boolean value. If it evaluates to `TRUE`, the section will be shown.
+
+        We use the `loggedIn` property from the server's response to determine whether the user is logged in.
+      -->
+      <section amp-access="loggedIn">
+        This section is only visible if you're logged in. Welcome back!
+      </section>
+
+      <!-- The response from the server can be used to convey more information about the logged in user. In this case, we differentiate between users who have the `powerUser` property set in addition to being logged in.
+      -->
+      <section amp-access="loggedIn AND powerUser">
+        This section is only visible if you're logged in <em>and</em> classified as "power user".
+      </section>
+
+      <!-- If the `loggedIn` property has the default value of false, we can assume that the user is not logged in.
+      -->
+      <section amp-access="NOT loggedIn">
+        This section is only visible if you're not logged in.
+      </section>
+
+      <!-- Combine `amp-access` and `amp-mustache` to show information returned from the authorization request. In this case we show the email returned in the authentification response.
+      -->
+      <section amp-access="loggedIn">
+        <template amp-access-template type="amp-mustache">
+          <h3>Hello {{email}}!</h3>
+
+          {{#powerUser}}
+          <p>You are a power user.</p>
+          {{/powerUser}}
+        </template>
+      </section>
+
+      <!-- ## Login  -->
+      <!-- Use `on="tap:amp-access.login-sign-in"` to open the login dialog when the element is clicked. This simply opens a popup window that takes the user to the URL defined inside the configuration at the top. `amp-access-hide` will default the component to be hidden and enabled later if the `amp-access` expression is evaluated to `TRUE` -->
+      <button amp-access="NOT loggedIn" amp-access-hide on="tap:amp-access.login-sign-in">
+        Login
+      </button>
+
+      <!-- ## Logout  -->
+      <!-- The logout link should only be shown for logged in subscribers. We use a trick here: the logout is a login action that directly redirects back to the original URL. This has the advantage that the page updates without being reloaded.
+      -->
+      <button amp-access="loggedIn" amp-access-hide on="tap:amp-access.login-sign-out">
+        Logout
+      </button>
       <article>
         <header>
           <h1>Top Trump ally sounds 2020 election alarm over coronavirus response</h1>
