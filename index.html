@@ -30,6 +30,8 @@
     <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
     <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <script async custom-element="amp-access" src="https://cdn.ampproject.org/v0/amp-access-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js" /></script>
+    <script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>
     <meta name="amp-script-src" content="sha384-_K5vObiCHYkKi59Du3oqqLYhv3FxC2SoQ6OXQ6FcKaAovOQDBbVJFN2Xl1-vRjhw"/>
     <link rel="shortcut icon" href="amp_favicon.png">
 
@@ -160,7 +162,7 @@
        "description": "My first experience in an AMPlified world"
       }
     </script>
-    <!-- <script id="amp-access" type="application/json">
+    <script id="amp-access" type="application/json">
       {
           "authorization": "/amp-authorization?rid=READER_ID&url=CANONICAL_URL&ref=DOCUMENT_REFERRER&_=RANDOM",
           "pingback": "/amp-pingback?rid=READER_ID&url=CANONICAL_URL&ref=DOCUMENT_REFERRER&_=RANDOM",
@@ -174,7 +176,7 @@
               "powerUser": false
           }
       }
-    </script> -->
+    </script>
     
     
   </head>
@@ -184,7 +186,7 @@
     
     <amp-analytics type="googleanalytics" config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
       
-      <!-- <script type="application/json">
+      <script type="application/json">
         {
           "vars": {
             "account": "UA-163300991-1"
@@ -203,7 +205,7 @@
             },
           }
         }
-      </script> -->
+      </script>
     <amp-experiment>
       <script type="application/json">
         {
@@ -245,6 +247,98 @@
       <!-- This section is visible to all users. No special markup is needed in this case.-->
       <section>
         Welcome to the website! This section is visible to all.
+      </section>
+
+      <section>
+        <amp-megaphone
+          height="166"
+          layout="fixed-height"
+          data-episode="OSC7749686951"
+          data-light
+        ></amp-megaphone>
+      </section>
+
+      <section>
+        <amp-state id="source">
+          <script type="application/json">
+            "av/audio.mp3"
+          </script>
+        </amp-state>
+        <amp-state id="artist">
+          <script type="application/json">
+            "Example Artist"
+          </script>
+        </amp-state>
+        <amp-audio id="audio"
+          width="auto" height="50"
+          src="av/audio.mp3"
+          [src]="source"
+          artist="Example Artist"
+          [artist]="artist"
+          layout="fixed-height">
+        </amp-audio>
+        <button on="tap:AMP.setState({source: 'https://ccrma.stanford.edu/~jos/mp3/bachfugue.mp3'})">Change src</button>
+        <button on="tap:AMP.setState({artist: 'The AMP Team'})">Set artist (Media Session)</button>
+        <button on="tap:audio.play">Play</button>
+        <button on="tap:audio.pause">Pause</button>
+      </section>
+
+      <section>
+        <form method="post"
+    action-xhr="https://example.com/subscribe"
+    custom-validation-reporting="show-all-on-submit"
+    target="_blank">
+    <fieldset>
+      <label>
+        <span>Name:</span>
+        <input type="text"
+          name="name"
+          id="name5"
+          required
+          pattern="\w+\s\w+">
+        <span visible-when-invalid="valueMissing"
+          validation-for="name5"></span>
+        <span visible-when-invalid="patternMismatch"
+          validation-for="name5">
+          Please enter your first and last name separated by a space (e.g. Jane Miller)
+        </span>
+      </label>
+      <br>
+      <label>
+        <span>Email:</span>
+        <input type="email"
+          name="email"
+          id="email5"
+          required>
+        <span visible-when-invalid="valueMissing"
+          validation-for="email5"></span>
+        <span visible-when-invalid="typeMismatch"
+          validation-for="email5"></span>
+      </label>
+      <br>
+      <input type="submit"
+        value="Subscribe">
+    </fieldset>
+  </form>
+      </section>
+
+      <section>
+        <form method="post" action-xhr="/amp-form" target="_top">
+          <h2>News worthy of your time</h2>
+          <p>
+            Get newsletters featuring news, scoops & expert analysis by award-winning Axios journalists like Mike Allen, Dan
+            Primack and Ina Fried.
+          </p>
+          <template type="amp-mustache">Subscription successful!</template>
+          <input type="email" name="email" data-name="Email" placeholder="Enter your email address" id="email" required />
+          <input type="submit" value="Sign Up" />
+          <div submit-success>
+            <template type="amp-mustache">Subscription successful! Yes!</template>
+          </div>
+          <div submit-error>
+            <template type="amp-mustache">Subscription failed!</template>
+          </div>
+        </form>
       </section>
 
       <!-- Use the `amp-access` attribute to control the visibility of each component. The expression must evaluate to a boolean value. If it evaluates to `TRUE`, the section will be shown.
@@ -366,8 +460,8 @@
 
       
 
-      <div class="custom-lightbox" tabindex="0" role="button"  id="customLightbox" >
-        <div class="custom-lightbox__content" >  
+      <!--<div class="custom-lightbox" tabindex="0" role="button"  id="customLightbox" >
+         <div class="custom-lightbox__content" >  
           <form method="post" action-xhr="https://example.com/subscribe" target="_top">
             <label>
               <span>Email:</span>
@@ -389,7 +483,7 @@
           </form>
           <button type="button" class="custom-lightbox__close" on="tap:customLightbox.hide" id="close-newsletter-form">✕</button>
         </div>       
-      </div> 
+      </div>  -->
     </main>
 
 
