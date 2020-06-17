@@ -249,16 +249,16 @@
         Welcome to the website! This section is visible to all.
       </section>
 
-      <section>
+      <!-- <section>
         <amp-megaphone
           height="166"
           layout="fixed-height"
           data-episode="OSC7749686951"
           data-light
         ></amp-megaphone>
-      </section>
+      </section> -->
 
-      <section>
+      <!-- <section>
         <amp-state id="source">
           <script type="application/json">
             "av/audio.mp3"
@@ -281,9 +281,9 @@
         <button on="tap:AMP.setState({artist: 'The AMP Team'})">Set artist (Media Session)</button>
         <button on="tap:audio.play">Play</button>
         <button on="tap:audio.pause">Pause</button>
-      </section>
+      </section> -->
 
-      <section>
+      <!-- <section>
         <form method="post"
     action-xhr="https://example.com/subscribe"
     custom-validation-reporting="show-all-on-submit"
@@ -320,7 +320,7 @@
         value="Subscribe">
     </fieldset>
   </form>
-      </section>
+      </section> -->
 
       <section>
         <form method="post" action-xhr="/amp-form" target="_top">
@@ -345,25 +345,25 @@
 
         We use the `loggedIn` property from the server's response to determine whether the user is logged in.
       -->
-      <section amp-access="loggedIn">
+      <!-- <section amp-access="loggedIn">
         This section is only visible if you're logged in. Welcome back!
-      </section>
+      </section> -->
 
       <!-- The response from the server can be used to convey more information about the logged in user. In this case, we differentiate between users who have the `powerUser` property set in addition to being logged in.
       -->
-      <section amp-access="loggedIn AND powerUser">
+      <!-- <section amp-access="loggedIn AND powerUser">
         This section is only visible if you're logged in <em>and</em> classified as "power user".
-      </section>
+      </section> -->
 
       <!-- If the `loggedIn` property has the default value of false, we can assume that the user is not logged in.
       -->
-      <section amp-access="NOT loggedIn">
+      <!-- <section amp-access="NOT loggedIn">
         This section is only visible if you're not logged in.
-      </section>
+      </section> -->
 
       <!-- Combine `amp-access` and `amp-mustache` to show information returned from the authorization request. In this case we show the email returned in the authentification response.
       -->
-      <section amp-access="loggedIn">
+      <!-- <section amp-access="loggedIn">
         <template amp-access-template type="amp-mustache">
           <h3>Hello {{email}}!</h3>
 
@@ -371,21 +371,21 @@
           <p>You are a power user.</p>
           {{/powerUser}}
         </template>
-      </section>
+      </section> -->
 
       <!-- ## Login  -->
       <!-- Use `on="tap:amp-access.login-sign-in"` to open the login dialog when the element is clicked. This simply opens a popup window that takes the user to the URL defined inside the configuration at the top. `amp-access-hide` will default the component to be hidden and enabled later if the `amp-access` expression is evaluated to `TRUE` -->
-      <button amp-access="NOT loggedIn" amp-access-hide on="tap:amp-access.login-sign-in">
+      <!-- <button amp-access="NOT loggedIn" amp-access-hide on="tap:amp-access.login-sign-in">
         Login
-      </button>
+      </button> -->
 
       <!-- ## Logout  -->
       <!-- The logout link should only be shown for logged in subscribers. We use a trick here: the logout is a login action that directly redirects back to the original URL. This has the advantage that the page updates without being reloaded.
       -->
-      <button amp-access="loggedIn" amp-access-hide on="tap:amp-access.login-sign-out">
+      <!-- <button amp-access="loggedIn" amp-access-hide on="tap:amp-access.login-sign-out">
         Logout
-      </button>
-      <article>
+      </button> -->
+      <!-- <article>
         <header>
           <h1>Top Trump ally sounds 2020 election alarm over coronavirus response</h1>
         </header>
@@ -449,7 +449,7 @@
               <p> {{ response }} </p>
           </article>
         </template>
-      </amp-list>
+      </amp-list> -->
 
       <div class="random">
         <button type="button" class="button-color-experiment">Load a random button style</button>
