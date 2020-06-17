@@ -189,30 +189,9 @@
     
     
     
-    <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G" data-credentials="include">
-      <amp-analytics type="googleanalytics">
-        <script type="application/json">
-          {
-            "vars": {
-              "account": "UA-163300991-1"
-            },
-            "requests": {
-              "experiment": "${pageview}&xid=${experiment}&xvar=${variant}"
-            },
-            "triggers": {
-              "default pageview": {
-                "on": "visible",
-                "request": "experiment",
-                "vars": {
-                  "experiment": "H8vIiY2yTGq_zRqryahpKQj",
-                  "variant": "VARIANT(button-color-experiment)"
-                }
-              }
-            }
-          }
-        </script>
-      </amp-analytics>
-      <!-- <script type="application/json">
+
+    <amp-analytics type="googleanalytics">
+      <script type="application/json">
         {
           "vars": {
             "account": "UA-163300991-1"
@@ -225,13 +204,14 @@
               "on": "visible",
               "request": "experiment",
               "vars": {
-                "xid": "H8vIiY2yTGq_zRqryahpKQ",
-                "xvar": "VARIANT(button-color-experiment)"
+                "experiment": "H8vIiY2yTGq_zRqryahpKQj",
+                "variant": "VARIANT(button-color-experiment)"
               }
-            },
+            }
           }
         }
-      </script> -->
+      </script>
+    </amp-analytics>
     <amp-experiment>
       <script type="application/json">
         {
