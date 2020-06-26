@@ -124,14 +124,14 @@
         height: 40px;
         border: 0;
       }
-      body[amp-x-button-color-experiment="0"] .button-color-experiment {
+      body[amp-x-cta_testing="0"] .button-color-experiment {
       background-color: yellow;
       color: black;
       }
-      body[amp-x-button-color-experiment="1"] .button-color-experiment {
+      body[amp-x-cta_testing="1"] .button-color-experiment {
         background-color: red;
       }
-      body[amp-x-button-color-experiment="2"] .button-color-experiment {
+      body[amp-x-cta_testing="2"] .button-color-experiment {
         background-color: blue;
       }
       
@@ -189,8 +189,25 @@
     
   </head>
   <body>
-    <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include">
+    <amp-analytics  config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include">
       <script type="application/json">
+        {
+          "requests": {
+            "experiment": "${pageview}&xid=${experiment}&xvar=${variant}"
+          },
+          "triggers": {
+            "trackPageview": {
+              "on": "visible",
+              "request": "experiment",
+              "vars": {
+                "experiment": "O8qz7OwATweOKG3bM82tSQ",
+                "variant": "VARIANT(cta_testing)"
+              }
+            }
+          }
+        }
+      </script>
+      <!-- <script type="application/json">
         {
           "vars": {
             "account": "UA-163300991-1"
@@ -203,18 +220,18 @@
               "on": "visible",
               "request": "experiment",
               "vars": {
-                "experiment": "H8vIiY2yTGq_zRqryahpKQj",
-                "variant": "VARIANT(button-color-experiment)"
+                "experiment": "O8qz7OwATweOKG3bM82tSQ",
+                "variant": "VARIANT(cta_testing)"
               }
             },
           }
         }
-      </script>
+      </script> -->
     </amp-analytics>
     <amp-experiment>
       <script type="application/json">
         {
-          "button-color-experiment": {
+          "cta_testing": {
             "variants": {
               "0": 25,
               "1": 25,
