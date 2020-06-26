@@ -43,12 +43,14 @@
         width: auto;
         margin: 0;
         padding: 0;
+        overflow: scroll;
       }
 
       .center {
         max-width: 790px;
         margin-left: auto;
         margin-right: auto;
+        overflow: auto;
       }
 
       header {
@@ -71,21 +73,7 @@
       .question {
         background-color: #2B63CD
       }
-      .button-color-experiment {
-        background-color: rebeccapurple;
-        height: 40px;
-        border: 0;
-      }
-      body[amp-x-button-color-experiment="0"] .button-color-experiment {
-      background-color: yellow;
-      color: black;
-      }
-      body[amp-x-button-color-experiment="1"] .button-color-experiment {
-        background-color: red;
-      }
-      body[amp-x-button-color-experiment="2"] .button-color-experiment {
-        background-color: blue;
-      }
+
 
       .is-not-scrollable {
         overflow: h
@@ -130,6 +118,21 @@
 
       .custom-lightbox h1 {
         color: white;
+      }
+      .button-color-experiment {
+        background-color: rebeccapurple;
+        height: 40px;
+        border: 0;
+      }
+      body[amp-x-button-color-experiment="0"] .button-color-experiment {
+      background-color: yellow;
+      color: black;
+      }
+      body[amp-x-button-color-experiment="1"] .button-color-experiment {
+        background-color: red;
+      }
+      body[amp-x-button-color-experiment="2"] .button-color-experiment {
+        background-color: blue;
       }
       
     </style>
@@ -186,10 +189,6 @@
     
   </head>
   <body>
-    
-    
-    
-
     <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include">
       <script type="application/json">
         {
@@ -254,6 +253,38 @@
       <section>
         Welcome to the website! This section is visible to all.
       </section>
+      <amp-img
+      alt="A view of the sea"
+      src="/img/mountains.jpg"
+      srcset="/img/mountains-small.jpg 320w,
+              /img/mountains.jpg 640w"
+      width="900"
+      height="675"
+      layout="fixed"
+      >
+      </amp-img>
+
+      <amp-img
+      alt="A view of the sea"
+      src="/img/mountains-media.jpg"
+      media="(min-width: 769px)"
+      srcset="/img/mountains-small-media.jpg 320w,
+              /img/mountains-media.jpg 640w"
+      width="900"
+      height="675"
+      layout="responsive"
+      >
+      </amp-img>
+
+      <amp-img
+      alt="A view of the sea"
+      src="/img/mountains-small-media.jpg"
+      media="(max-width: 768px)"
+      width="900"
+      height="675"
+      layout="responsive"
+      >
+      </amp-img>
 
       <!-- <section>
         <amp-megaphone
