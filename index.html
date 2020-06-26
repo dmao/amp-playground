@@ -187,13 +187,18 @@
     </script> -->
     
     
-  </head>
+  </head> 
+
   <body>
-    <amp-analytics  config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include">
+    <!-- config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include" -->
+    <amp-analytics id='analytics1' type='googleanalytics'>
       <script type="application/json">
         {
           "requests": {
             "experiment": "${pageview}&xid=${experiment}&xvar=${variant}"
+          },
+          "vars": {
+            "account": "UA-163300991-1"
           },
           "triggers": {
             "trackPageview": {
@@ -207,7 +212,7 @@
           }
         }
       </script>
-      
+
       <!-- <script type="application/json">
         {
           "vars": {
