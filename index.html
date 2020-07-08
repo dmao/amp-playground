@@ -194,31 +194,11 @@
     <amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MLK598G&gtm.url=SOURCE_URL" data-credentials="include">
       <script type="application/json">
         {
-          "requests": {
-            "experiment": "${pageview}&xid=${experiment}&xvar=${variant}"
-          },
           "vars": {
-            "account": "UA-163300991-1"
+            "experiment": "O8qz7OwATweOKG3bM82tSQ",
+            "variant": "VARIANT(cta_testing)"
+            "request": "${pageview}&xid=${experiment}&xvar=${variant}",
           },
-          "triggers": {
-            "trackPageview": {
-              "on": "visible",
-              "request": "experiment",
-              "vars": {
-                "experiment": "O8qz7OwATweOKG3bM82tSQ",
-                "variant": "VARIANT(cta_testing)"
-              }
-            },
-            "click on #header trigger": {
-              "on": "click",
-              "selector": "#header",
-              "request": "event",
-              "vars": {
-                "eventCategory": "examples",
-                "eventAction": "clicked-header"
-              }
-            }
-          }
         }
       </script>
     </amp-analytics>
