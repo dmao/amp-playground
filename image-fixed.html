@@ -103,23 +103,56 @@
   <body>
     <main class="center text-center">
       <header><h1>Image fixed</h1></header>
-      <amp-img
+      <figure>
+        <amp-img
         alt="A view of the sea"
         src="/img/mountains-narrow.jpg"
         width="300"
         height="169"
         layout="fixed"
-      >
-      </amp-img>
-      <a href="#">
-        <amp-img
-        src="/img/mountains-narrow.jpg"
-        width="300"
-        height="169"
-        layout="intrinsic"
-        alt="A view of the sea"
         >
         </amp-img>
+        <figcaption>with an alt</figcaption>  
+      </figure>
+
+      <a href="#">
+        <figure>
+          <amp-img
+          alt="A view of the sea"
+          src="/img/mountains-narrow.jpg"
+          width="300"
+          height="169"
+          layout="fixed"
+          >
+          </amp-img>
+          <figcaption>link with an alt</figcaption>  
+        </figure>
+      </a>
+
+      <a href="#">
+        <figure>
+          <amp-img
+          src="/img/mountains-narrow.jpg"
+          width="300"
+          height="169"
+          layout="fixed"
+          >
+          </amp-img>
+          <figcaption>link without an alt</figcaption>  
+        </figure>
+      </a>
+
+      <a href="#">
+        <figure>
+          <amp-img
+          src="/img/mountains-narrow.jpg"
+          width="300"
+          height="169"
+          layout="intresic"
+          >
+          </amp-img>
+          <figcaption>link without an alt & intresic layout</figcaption>  
+        </figure>
       </a>
     </main>
   </body>
